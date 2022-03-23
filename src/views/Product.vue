@@ -1,0 +1,27 @@
+<template>
+  <div>
+    <router-link :to="{ name: 'catalog' }">Назад в каталог</router-link>
+    <div v-if="!getProduct"><h5>Такого товара не существует!</h5></div>
+    <div v-else>
+      <hr />
+      <h1>{{ getProduct.title }}</h1>
+      <p>{{getProduct.info}}</p>
+      <hr />
+      <p> Цена: {{ getProduct.price }} $</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters("products", { product: "getItem" }),
+    getProduct() {
+      return this.product(+(this.$route.params.id));
+    },
+  },
+
+  methods: {},
+};
+</script>
