@@ -106,6 +106,7 @@ export default {
 
 .list-group-item a {
   text-decoration: none;
+  display: block;
 }
 
 .list-group-item.active a {
