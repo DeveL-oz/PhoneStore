@@ -3,7 +3,7 @@
     <header>
       <div class="container">
         <div class="row">
-          <div class="col col-sm-9">
+          <div class="col col-sm-11 mb-4">
             <h2>Интернет-магазин</h2>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -19,17 +19,17 @@
               <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
             </svg>
           </div>
-          <div class="col col-sm-3">
+          <div class="col col-sm-1 pt-5">
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn"
               @click="$router.push('/cart')"
               :disabled="cartCnt === 0"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 fill="currentColor"
                 class="bi bi-basket3-fill"
                 viewBox="0 0 16 16"
@@ -42,12 +42,12 @@
             </button>
           </div>
         </div>
-        <hr />
       </div>
     </header>
     <section>
       <div class="container">
         <div class="row">
+          <hr />
           <div class="col col-sm-3 menu">
             <ul class="list-group">
               <router-link
@@ -68,12 +68,17 @@
               </router-link>
             </ul>
           </div>
-          <div class="col col-sm-9">
+          <div class="col col-sm-9 custom">
             <router-view></router-view>
           </div>
         </div>
       </div>
     </section>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-center">&copy; polyachenkov</div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -96,10 +101,6 @@ export default {
 </script>
 
 <style>
-.menu {
-  border-right: 1px solid #ddd;
-}
-
 .list-group-item {
   transition: background 0.3s, color 0.3s;
 }
@@ -111,5 +112,13 @@ export default {
 
 .list-group-item.active a {
   color: inherit;
+}
+
+.custom {
+  min-height: 650px;
+}
+
+div {
+  font-family: "Ubuntu", sans-serif;
 }
 </style>

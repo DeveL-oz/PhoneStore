@@ -1,12 +1,11 @@
 <template>
   <div v-if="length === 0">
     <h2>Оформите заказ</h2>
-    <hr />
     <p>После чего он отобразится здесь</p>
   </div>
   <div v-else>
     <h3>Заказ #1</h3>
-    <table class="table">
+    <table class="table bg-white rounded">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -24,7 +23,7 @@
         </tr>
       </tbody>
     </table>
-    <h4>К оплате: {{ total }} $</h4>
+    <h4>Итого: {{ total }} $</h4>
     <button type="button" class="btn btn-success" @click="payClick">
       Оплатить
     </button>

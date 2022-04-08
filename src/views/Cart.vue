@@ -3,7 +3,7 @@
     <h2>Корзина:</h2>
   </div>
   <div v-if="lengthCart === 0"><h3>Добавьте товар в корзину</h3></div>
-  <table class="table" v-else>
+  <table class="table bg-white rounded" v-else>
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
