@@ -23,8 +23,8 @@
             <button
               type="button"
               class="btn"
-              @click="$router.push('/cart')"
               :disabled="cartCnt === 0"
+              @click="$router.push('/cart')"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,21 +47,24 @@
     <section>
       <div class="container">
         <div class="row">
-          <hr />
+          <hr>
           <div class="col col-sm-3 menu">
             <ul class="list-group">
               <router-link
                 v-for="item in menu"
                 :key="item.route"
-                :to="{ name: item.route }"
                 v-slot="{ route, isExactActive, navigate }"
+                :to="{ name: item.route }"
                 :custom="true"
               >
                 <li
                   class="list-group-item"
                   :class="isExactActive ? 'active' : ''"
                 >
-                  <a :href="route.fullPath" @click="navigate">{{
+                  <a
+                    :href="route.fullPath"
+                    @click="navigate"
+                  >{{
                     item.title
                   }}</a>
                 </li>
@@ -69,33 +72,35 @@
             </ul>
           </div>
           <div class="col col-sm-9 custom">
-            <router-view></router-view>
+            <router-view />
           </div>
         </div>
       </div>
     </section>
     <footer>
       <div class="container">
-        <div class="row justify-content-center">&copy; polyachenkov</div>
+        <div class="row justify-content-center">
+          &copy; polyachenkov
+        </div>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
   data: () => ({
     menu: [
-      { route: "catalog", title: "Каталог" },
-      { route: "cart", title: "Корзина" },
-      { route: "checkout", title: "Мои заказы" },
+      { route: 'catalog', title: 'Каталог' },
+      { route: 'cart', title: 'Корзина' },
+      { route: 'checkout', title: 'Мои заказы' },
     ],
   }),
   computed: {
-    ...mapGetters("cart", { cartCnt: "itemCntSum" }),
-    ...mapGetters("cart", { total: "total" }),
+    ...mapGetters('cart', { cartCnt: 'itemCntSum' }),
+    ...mapGetters('cart', { total: 'total' }),
   },
 };
 </script>
