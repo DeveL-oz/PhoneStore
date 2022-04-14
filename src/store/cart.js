@@ -5,16 +5,12 @@ export default {
   },
   getters: {
     items: (state) => state.products,
-    length: (state) => state.products.length,
-    itemCnt: (state) => (id) => state.products.find((item) => item.id === id).cnt,
+    itemCount: (state) => (id) => state.products.find((item) => item.id === id).cnt,
 
-    total(state, _getters, _rootState, rootGetters) {
-      let total = 0;
-      state.products.forEach((item) => total += rootGetters['products/getItem'](item.id).price * item.cnt);
-      return total;
-    },
+    total: (state, _getters, _rootState, rootGetters) => state.products.reduce((total, item) => total += rootGetters['products/getItem'](item.id).price * item.cnt, 0),
+
     has: (state) => (id) => state.products.some((pr) => pr.id === id),
-    itemCntSum: (state) => state.products.reduce((s, i) => s += i.cnt, 0),
+    itemCountSum: (state) => state.products.reduce((s, i) => s += i.cnt, 0),
 
   },
   mutations: {

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="length === 0">
+  <div v-if="cart.length === 0">
     <h2>Оформите заказ</h2>
     <p>После чего он отобразится здесь</p>
   </div>
@@ -30,8 +30,8 @@
           <th scope="row">
             {{ i + 1 }}
           </th>
-          <td>{{ products.find((pr) => pr.id === item.id).title }}</td>
-          <td>{{ products.find((pr) => pr.id === item.id).price }} $</td>
+          <td>{{ products.find((pr) => pr.id === item.id)?.title }}</td>
+          <td>{{ products.find((pr) => pr.id === item.id)?.price }} $</td>
           <td>{{ item.cnt }}</td>
         </tr>
       </tbody>
@@ -51,19 +51,18 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  methods: {
-    payClick() {
-      this.$store.dispatch('cart/reset');
-      this.$router.push('/pay');
-    },
-  },
   computed: {
     ...mapGetters('cart', {
       cart: 'items',
-      length: 'length',
       total: 'total',
     }),
     ...mapGetters('products', { products: 'all' }),
+  },
+  methods: {
+    payClick() {
+      this.$store.dispatch('cart/reset');
+      this.$router.push({ name: 'Pay' });
+    },
   },
 };
 </script>

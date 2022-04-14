@@ -2,8 +2,8 @@
   <div>
     <h2>Корзина:</h2>
   </div>
-  <div v-if="lengthCart === 0">
-    <h3>Добавьте товар в корзину</h3>
+  <div v-if="cart.length === 0">
+    <h5>Добавьте товар в корзину</h5>
   </div>
   <table
     v-else
@@ -63,7 +63,7 @@
       </tr>
     </tbody>
   </table>
-  <div v-if="lengthCart != 0">
+  <div v-if="cart.length != 0">
     <h5>Итого: {{ totalCart }} $</h5>
     <router-link
       :to="{ name: 'checkout' }"
@@ -80,7 +80,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters('cart', { cart: 'items', lengthCart: 'length', totalCart: 'total' }),
+    ...mapGetters('cart', { cart: 'items', totalCart: 'total' }),
     ...mapGetters('products', { products: 'all' }),
   },
   methods: {
