@@ -8,6 +8,5 @@ const app = createApp(App);
 app.use(store);
 app.use(router);
 store.dispatch('cart/load');
-store.dispatch('products/loadItems').then(() => {
-  app.mount('#app');
-});
+store.dispatch('products/loadItems');
+app.mount('#app');

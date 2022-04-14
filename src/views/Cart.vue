@@ -35,9 +35,9 @@
         <th scope="row">
           {{ i + 1 }}
         </th>
-        <td>{{ products.find((pr) => pr.id === item.id).title }}</td>
-        <td>{{ products.find((pr) => pr.id === item.id).price }} $</td>
-        <td>{{ item.cnt }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.price }} $</td>
+        <td>{{ item.count }}</td>
         <td>
           <button
             class="btn btn-warning"
@@ -80,7 +80,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters('cart', { cart: 'items', totalCart: 'total' }),
+    ...mapGetters('cart', { cart: 'itemsCart', totalCart: 'total' }),
     ...mapGetters('products', { products: 'all' }),
   },
   methods: {

@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="row">
+      <div class="text-center" v-show="!products.length>0">
+       <div class="spinner-border" role="status">
+  </div>
+</div>
       <div
         v-for="product in products"
         :key="product.id"
@@ -31,7 +35,7 @@
             <button
               v-else
               class="btn btn-success"
-              @click="addToCart(product.id)"
+              @click="addToCart(product)"
             >
               Добавить в корзину
             </button>
@@ -57,7 +61,7 @@ export default {
 </script>
 
 <style scoped>
-	.row{
-		padding-left: 15px;
-	}
+.row{
+padding-left: 15px;
+}
 </style>

@@ -4,30 +4,28 @@ export default {
     products: [],
   },
   getters: {
-    items: (state) => state.products,
-    itemCount: (state) => (id) => state.products.find((item) => item.id === id).cnt,
-
-    total: (state, _getters, _rootState, rootGetters) => state.products.reduce((total, item) => total += rootGetters['products/getItem'](item.id).price * item.cnt, 0),
-
-    has: (state) => (id) => state.products.some((pr) => pr.id === id),
-    itemCountSum: (state) => state.products.reduce((s, i) => s += i.cnt, 0),
+    itemsCart: (state) => state.products,
+    itemCount: (state) => (id) => state.products.find((item) => item.id === id).count,
+    total: (state) => state.products.reduce((total, item) => total += item.price * item.count, 0),
+    has: (state) => (id) => state.products.some((item) => item.id === id),
+    itemCountSum: (state) => state.products.reduce((s, i) => s += i.count, 0),
 
   },
   mutations: {
     loadCart(state, items) {
       state.products = items;
     },
-    add(state, id) {
-      state.products.push({ id, cnt: 1 });
+    add(state, pr) {
+      state.products.push({ ...pr, count: 1 });
     },
     remove(state, id) {
       state.products = state.products.filter((pr) => pr.id !== id);
     },
     increase(state, id) {
-      state.products.find((pr) => pr.id == id).cnt++;
+      state.products.find((pr) => pr.id === id).count++;
     },
     decrease(state, id) {
-      state.products.find((pr) => pr.id == id).cnt--;
+      state.products.find((pr) => pr.id === id).count--;
     },
     updateCart(state) {
       localStorage.setItem('items', JSON.stringify(state.products));
@@ -38,9 +36,9 @@ export default {
 
   },
   actions: {
-    add(store, id) {
-      if (!store.getters.has(id)) {
-        store.commit('add', id);
+    add(store, pr) {
+      if (!store.getters.has(pr.id)) {
+        store.commit('add', pr);
         store.commit('updateCart');
       }
     },
@@ -56,7 +54,7 @@ export default {
       store.commit('updateCart');
     },
     decrease(store, id) {
-      if (store.getters.itemCnt(id) > 1) {
+      if (store.getters.itemCount(id) > 1) {
         store.commit('decrease', id);
         store.commit('updateCart');
       }
