@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="text-center" v-show="!products.length>0">
+      <div class="text-center" v-show="products.length===0">
        <div class="spinner-border" role="status">
   </div>
 </div>

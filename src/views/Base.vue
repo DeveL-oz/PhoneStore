@@ -36,7 +36,7 @@
         </tr>
       </tbody>
     </table>
-    <h4>Итого: {{ total }} $</h4>
+    <h5>Итого: {{ total }} $</h5>
     <button
       type="button"
       class="btn btn-success"

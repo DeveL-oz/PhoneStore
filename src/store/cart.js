@@ -6,26 +6,26 @@ export default {
   getters: {
     itemsCart: (state) => state.products,
     itemCount: (state) => (id) => state.products.find((item) => item.id === id).count,
-    total: (state) => state.products.reduce((total, item) => total += item.price * item.count, 0),
+    total: (state) => state.products.reduce((total, item) => total + item.price * item.count, 0),
     has: (state) => (id) => state.products.some((item) => item.id === id),
-    itemCountSum: (state) => state.products.reduce((s, i) => s += i.count, 0),
+    itemCountSum: (state) => state.products.reduce((s, i) => s + i.count, 0),
 
   },
   mutations: {
     loadCart(state, items) {
       state.products = items;
     },
-    add(state, pr) {
-      state.products.push({ ...pr, count: 1 });
+    add(state, product) {
+      state.products.push({ ...product, count: 1 });
     },
     remove(state, id) {
       state.products = state.products.filter((pr) => pr.id !== id);
     },
     increase(state, id) {
-      state.products.find((pr) => pr.id === id).count++;
+      state.products.find((pr) => pr.id === id).count += 1;
     },
     decrease(state, id) {
-      state.products.find((pr) => pr.id === id).count--;
+      state.products.find((pr) => pr.id === id).count -= 1;
     },
     updateCart(state) {
       localStorage.setItem('items', JSON.stringify(state.products));
