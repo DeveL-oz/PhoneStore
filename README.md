@@ -2,6 +2,21 @@
 
 Интернет-магазин сотовой техники
 
-## Демо-версия приложения
+## Demo
 
-- [StorePhone](https://store-phone77.netlify.app/)
+- [Click](https://store-phone77.netlify.app/)
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run dev
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
